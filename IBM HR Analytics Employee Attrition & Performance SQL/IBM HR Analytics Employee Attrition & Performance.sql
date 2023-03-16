@@ -21,31 +21,31 @@ CREATE TABLE IBM_HR_Analytics_Employee_Attrition_and_Performance(
 	           EducationField VARCHAR,
 	             EmployeeCount INT,
 	               EmployeeNumber INT PRIMARY KEY,
-	EnvironmentSatisfaction INT,
-	Gender VARCHAR,
-	HourlyRate INT,
-	JobInvolvement INT,
-	JobLevel INT,
-	JobRole VARCHAR,
-	JobSatisfaction INT,
-	MaritalStatus VARCHAR,
-	MonthlyIncome INT,
-	MonthlyRate INT,
-	NumCompaniesWorked INT,
-	Over18 VARCHAR,
-	OverTime VARCHAR,
-	PercentSalaryHike INT,
-	PerformanceRating INT,
-	RelationshipSatisfaction INT,
-	StandardHours INT,
-	StockOptionLevel INT,
-	TotalWorkingYears INT,
-	TrainingTimesLastYear INT,
-	WorkLifeBalance INT,
-	YearsAtCompany INT,
-	YearsInCurrentRole INT,
-	YearsSinceLastPromotion INT,
-	YearsWithCurrManager INT
+	                EnvironmentSatisfaction INT,
+	                  Gender VARCHAR,
+	                    HourlyRate INT,
+	                     JobInvolvement INT,
+	                       JobLevel INT,
+	                         JobRole VARCHAR,
+	                           JobSatisfaction INT,
+	                            MaritalStatus VARCHAR,
+	                           MonthlyIncome INT,
+	                          MonthlyRate INT,
+	                         NumCompaniesWorked INT,
+	                        Over18 VARCHAR,
+	                       OverTime VARCHAR,
+	                     PercentSalaryHike INT,
+	                   PerformanceRating INT,
+	                 RelationshipSatisfaction INT,
+	               StandardHours INT,
+	             StockOptionLevel INT,
+	           TotalWorkingYears INT,
+	         TrainingTimesLastYear INT,
+	        WorkLifeBalance INT,
+	      YearsAtCompany INT,
+	   YearsInCurrentRole INT,
+       YearsSinceLastPromotion INT,
+    YearsWithCurrManager INT
 );
 
 --Question-1- Create a query to display the table. IBM_HR_Analytics_Employee_Attrition_and_Performance
@@ -53,37 +53,37 @@ SELECT * FROM IBM_HR_Analytics_Employee_Attrition_and_Performance;
 
 --Question-2- Create a qquery to count the total employee
 SELECT COUNT(employeecount) AS Total_Employee 
-FROM IBM_HR_Analytics_Employee_Attrition_and_Performance;
+   FROM IBM_HR_Analytics_Employee_Attrition_and_Performance;
 
 --Question-3- There are three department where employee is working count the empolyee by department and order it in descending number
 SELECT Department, COUNT(Employeecount) AS Total_Employee
-FROM IBM_HR_Analytics_Employee_Attrition_and_Performance
-GROUP BY Department
-ORDER BY Total_Employee DESC;
+  FROM IBM_HR_Analytics_Employee_Attrition_and_Performance
+   GROUP BY Department
+     ORDER BY Total_Employee DESC;
 
 --Question-4- Write a Query to find the detais of employee attrition having 5+ Year of experience in between age-group of 27-35
 -- Query-1(Method-1)
 SELECT * FROM IBM_HR_Analytics_Employee_Attrition_and_Performance
-WHERE age BETWEEN 27 AND 35
-AND totalworkingyears > 5;
+  WHERE age BETWEEN 27 AND 35
+   AND totalworkingyears > 5;
 
 --Query-1(Method-2)
 SELECT * FROM IBM_HR_Analytics_Employee_Attrition_and_Performance
-WHERE totalworkingyears > 5
-AND age BETWEEN 27 AND 35;
+  WHERE totalworkingyears > 5
+    AND age BETWEEN 27 AND 35;
 
 --Query-2
 SELECT COUNT(*) AS total_employee FROM IBM_HR_Analytics_Employee_Attrition_and_Performance
-WHERE totalworkingyears > 5
-AND age BETWEEN 27 AND 35;
+  WHERE totalworkingyears > 5
+   AND age BETWEEN 27 AND 35;
 
 --Question-5- Fetch the details of employees having maximum and minimum salary working in differents who received less than 13% salary hike
 SELECT Department, 
-MAX(MonthlyIncome),
-MIN(MonthlyIncome)
-FROM IBM_HR_Analytics_Employee_Attrition_and_Performance 
-WHERE PercentSalaryHike <13
-GROUP BY Department
+  MAX(MonthlyIncome),
+    MIN(MonthlyIncome)
+     FROM IBM_HR_Analytics_Employee_Attrition_and_Performance 
+    WHERE PercentSalaryHike <13
+   GROUP BY Department
 ORDER BY MAX(MonthlyIncome) DESC;
 
 /* Question-6-Calculate the average monthly income of all the  employees who worked more than 3 Years whose education background 
