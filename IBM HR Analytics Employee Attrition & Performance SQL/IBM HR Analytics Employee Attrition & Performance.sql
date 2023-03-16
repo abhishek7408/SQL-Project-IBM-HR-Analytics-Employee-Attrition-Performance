@@ -395,3 +395,10 @@ FROM IBM_HR_Analytics_Employee_Attrition_and_Performance
 GROUP BY JobRole
 ORDER BY Average_Environment_Satisfaction_Score;
 
+--Question-32-Is there a field that has attrited more than the others at IBM?
+SELECT EducationField, COUNT(EmployeeCount) AS Total_Employee, 
+CONCAT(ROUND(COUNT(EmployeeCount) * 100.0 / SUM(COUNT(EmployeeCount)) OVER (), 2), '%') AS Attrition_Percentage
+FROM IBM_HR_Analytics_Employee_Attrition_and_Performance
+WHERE Attrition = 'Yes'
+GROUP BY EducationField
+ORDER BY Total_Employee DESC;
